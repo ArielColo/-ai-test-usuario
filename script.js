@@ -126,3 +126,115 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Funciones de compartir en redes sociales
+function shareTwitter() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const text = `Hice el test de arquetipos de usuario de IA y soy: ${result}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+}
+
+function shareLinkedIn() {
+    const url = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+function shareReddit() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const title = `Test de Arquetipos de Usuario IA - Mi resultado: ${result}`;
+    const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+    window.open(redditUrl, '_blank', 'width=800,height=600');
+}
+
+function copyLink() {
+    const url = window.location.href;
+    
+    // Intentar usar la API moderna del portapapeles
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('¡Link copiado al portapapeles!');
+        }).catch(() => {
+            // Fallback si falla
+            fallbackCopyLink(url);
+        });
+    } else {
+        // Fallback para navegadores viejos
+        fallbackCopyLink(url);
+    }
+}
+
+function fallbackCopyLink(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        alert('¡Link copiado al portapapeles!');
+    } catch (err) {
+        alert('No se pudo copiar el link. Por favor copialo manualmente: ' + text);
+    }
+    document.body.removeChild(textArea);
+}
+
+// Funciones de compartir en redes sociales
+function shareTwitter() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const text = `Hice el test de arquetipos de usuario de IA y soy: ${result}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+}
+
+function shareLinkedIn() {
+    const url = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+function shareReddit() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const title = `Test de Arquetipos de Usuario IA - Mi resultado: ${result}`;
+    const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+    window.open(redditUrl, '_blank', 'width=800,height=600');
+}
+
+function copyLink() {
+    const url = window.location.href;
+    
+    // Intentar usar la API moderna del portapapeles
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('¡Link copiado al portapapeles!');
+        }).catch(() => {
+            // Fallback si falla
+            fallbackCopyLink(url);
+        });
+    } else {
+        // Fallback para navegadores viejos
+        fallbackCopyLink(url);
+    }
+}
+
+function fallbackCopyLink(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        alert('¡Link copiado al portapapeles!');
+    } catch (err) {
+        alert('No se pudo copiar el link. Por favor copialo manualmente: ' + text);
+    }
+    document.body.removeChild(textArea);
+}
